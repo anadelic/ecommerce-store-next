@@ -1,21 +1,20 @@
 import './global.scss';
 import Link from 'next/link';
+import styles from './layout.module.scss';
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head />
       <body>
-        <header>
+        <header className={styles.header}>
+          <div>
+            <Link href="/">LOGO</Link>
+          </div>
           <nav>
-            <div>
-              <Link href="/">LOGO</Link>
-            </div>
-            <div>
-              <Link href="/">HOME</Link>
-              <Link href="/">PRODUCTS</Link>
-              <Link href="/">CART</Link>
-            </div>
+            <Link href="/">HOME</Link>
+            <Link href="/products">ALL PRODUCTS</Link>
+            <Link href="/">CART</Link>
           </nav>
         </header>
         {children}

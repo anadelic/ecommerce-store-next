@@ -1,0 +1,15 @@
+.main {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  .image {
+    width: 800px;
+    height: 500px;
+    margin-left: 20px;
+  }
+
+  .h1 {
+    display: inline-flex;
+  }
+}
