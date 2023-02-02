@@ -20,7 +20,6 @@ export default function RootLayout({ children }) {
           </nav>
         </header>
         {children}
-        <footer>copyright store bla bla</footer>
       </body>
     </html>
   );

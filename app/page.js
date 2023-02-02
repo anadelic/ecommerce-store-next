@@ -12,8 +12,8 @@ export default function Home() {
           className={styles.image}
           src="/images/mainfoto.jpg"
           alt="mainphoto"
-          width="600"
-          height="350"
+          width="700"
+          height="500"
         />
       </section>
       <section className={styles.newIn}>
