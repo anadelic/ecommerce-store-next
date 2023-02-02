@@ -1,4 +1,4 @@
-export default function ProductsHead() {
+ function ProductsHead() {
   // This may change in the future
   return (
     <>
@@ -7,3 +7,4 @@ export default function ProductsHead() {
     </>
   );
 }
+export default ProductsHead;
