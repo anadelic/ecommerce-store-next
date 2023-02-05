@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { toys } from '../../../database/toys';
+import Product from './product';
 
 export const dynamic = 'force-dynamic';
 
@@ -10,13 +11,7 @@ export default function ProductPage({ params }) {
 
   return (
     <div>
-      <h2>{singleProduct.type}</h2>
-      <Image
-        src={`/images/${singleProduct.type}-${singleProduct.id}.jpg`}
-        alt={singleProduct.type}
-        width="300"
-        height="300"
-      />
+      <Product toy={singleProduct} />
     </div>
   );
 }

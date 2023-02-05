@@ -1,4 +1,10 @@
 .main {
   background-color: white;
-  margin-left: 20px;
+  margin-left: 0px;
+  display: flex;
+  justify-content: flex-start;
+
+  div {
+    margin-top: 50px;
+  }
 }
