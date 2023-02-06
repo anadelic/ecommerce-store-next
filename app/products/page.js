@@ -33,11 +33,12 @@ export default function ProductsPage() {
   return (
     <main className={styles.main}>
       <h1>All Products</h1>
+
       <div>
-        {toys.map((toy) => {
+        {productsWithCount.map((toy) => {
           return (
             <div key={toy.id}>
-              <p>{toy.quantity}</p>
+              <p>num {toy.quantity}</p>
               <Link href={`/products/${toy.type.toLocaleLowerCase()}`}>
                 <h2>{toy.type}</h2>
                 <Image
