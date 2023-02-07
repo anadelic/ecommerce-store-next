@@ -1,5 +1,4 @@
 'use client';
-
 import Image from 'next/image';
 import { useState } from 'react';
 import { getParsedCookie, setStringifiedCookie } from '../../../utilis/cookies';
@@ -9,10 +8,9 @@ export default function Product(props) {
 
   return (
     <>
-      <h2>{props.toy.type}</h2>
       <Image
-        src={`/images/${props.toy.type}-${props.toy.id}.jpg`}
-        alt={props.toy.type}
+        src={`/images/${props.toy.id}.jpg`}
+        alt={props.toy.name}
         width="300"
         height="300"
       />
@@ -35,7 +33,7 @@ export default function Product(props) {
           // if there is no cookie I create a cookie and set to value of the input qty
           if (!productsInCookies) {
             setStringifiedCookie('productsCookie', [
-              { id: props.toy.id, quantity: qty },
+              { id: props.product, quantity: qty },
             ]);
             // if there is no cookie function stop here
             return;
@@ -43,7 +41,7 @@ export default function Product(props) {
 
           // if cookie exists check if the product is in this cookie
           const foundProduct = productsInCookies.find((productInCookie) => {
-            return productInCookie.id === props.toy.id;
+            return productInCookie.id === props.product.id;
           });
 
           // product is inside of the cookie
@@ -53,7 +51,7 @@ export default function Product(props) {
             // my fruit is not inside of the cookie
           } else {
             // Add a the fruit to the array of fruits in cookies
-            productsInCookies.push({ id: props.toy.id, quantity: qty });
+            productsInCookies.push({ id: props.product.id, quantity: qty });
           }
 
           // Update the cookie after transformation

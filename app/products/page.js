@@ -1,10 +1,11 @@
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
-import { toys } from '../../database/toys';
+import { getToys } from '../../database/toys';
 import styles from './product.module.scss';
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const toys = await getToys();
   // get the cookies from the server
   const getProductsCookie = cookies().get('productsCookie');
   let productsParsed = [];
@@ -39,11 +40,11 @@ export default function ProductsPage() {
           return (
             <div key={toy.id}>
               <p>num {toy.quantity}</p>
-              <Link href={`/products/${toy.type.toLocaleLowerCase()}`}>
-                <h2>{toy.type}</h2>
+              <Link href={`/products/${toy.name}`}>
+                <h2>{toy.name}</h2>
                 <Image
-                  src={`/images/${toy.type}-${toy.id}.jpg`}
-                  alt={toy.type}
+                  src={`/images/${toy.id}.jpg`}
+                  alt={toy.name}
                   width="300"
                   height="300"
                 />

@@ -20,12 +20,20 @@ const toys = [
       'Stacking Stones "Rainbow Pastel Bundle. Age recommendation: from 12 months. Free from corners and edges. Also suitable for outdoor use. Material: 100% resource-saving EPP (expanded polypropylene) - fully recyclable. The product complies with the Toy Safety Directive 2009/48/EC. Country of manufacture: Germany',
     price: '175.00',
   },
-  { id: 4, name: 'Danny', description: 'guineapig', price: 'zylinder' },
-  { id: 5, name: 'Karl', description: 'llama', price: 'hat' },
+  {
+    id: 4,
+    name: 'Doll House Animals "Holdie Folk Dinosaurs"',
+    description:
+      'Doll House Animals "Holdie Folk Dinosaurs" 3pcs - details. Material: wool and cotton. Size: 20 x 12 cm. Line: Holdie Folk. Handmade. Fits in small children hands',
+    price: '29.90',
+  },
 ];
 
-export async function up(sql) {}
-
+export async function up(sql) {
+  await sql`
+   INSERT INTO toys ${sql(toys, 'name', 'description', 'price')}
+  `;
+}
 export async function down(sql) {
   for (const toy of toys) {
     await sql`

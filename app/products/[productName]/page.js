@@ -1,14 +1,11 @@
 import Image from 'next/image';
-import { toys } from '../../../database/toys';
-import Product from './product';
+import { getToyById } from '../../../database/toys';
+import Product from './product.js';
 
 export const dynamic = 'force-dynamic';
 
-export default function ProductPage({ params }) {
-  const singleProduct = toys.find((toy) => {
-    return toy.type.toLowerCase() === params.productName;
-  });
-
+export default async function ProductPage({ params }) {
+  const singleProduct = await getToyById(params.productId);
   return (
     <div>
       <Product toy={singleProduct} />
