@@ -4,13 +4,14 @@ import { useState } from 'react';
 import { getParsedCookie, setStringifiedCookie } from '../../../utilis/cookies';
 
 export default function Product(props) {
-  const [qty, setQty] = useState(props.toy.id);
+  const [qty, setQty] = useState(1);
+  console.log(props.toy);
 
   return (
     <>
       <Image
         src={`/images/${props.toy.id}.jpg`}
-        alt={props.toy.name}
+        alt={props.toy.toyName}
         width="300"
         height="300"
       />

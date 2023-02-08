@@ -40,11 +40,11 @@ export default async function ProductsPage() {
           return (
             <div key={toy.id}>
               <p>num {toy.quantity}</p>
-              <Link href={`/products/${toy.name}`}>
+              <Link href={`/products/${toy.id}`}>
                 <h2>{toy.name}</h2>
                 <Image
                   src={`/images/${toy.id}.jpg`}
-                  alt={toy.name}
+                  alt={toy.Toyname}
                   width="300"
                   height="300"
                 />

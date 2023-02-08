@@ -3,13 +3,12 @@ import { sql } from './connect';
 
 type Toy = {
   id: number;
-  firstName: string;
-  type: string;
-  accessory: string | null;
+  toyName: string;
+  toyDescription: string;
+  price: string | null;
 };
 
 // get all toys
-
 export const getToys = cache(async () => {
   const toys = await sql<Toy[]>`
     SELECT * FROM toys
@@ -18,7 +17,7 @@ export const getToys = cache(async () => {
   return toys;
 });
 
-// get a single animal
+// get a single toy
 export const getToyById = cache(async (id: number) => {
   const [toy] = await sql<Toy[]>`
     SELECT
@@ -27,6 +26,7 @@ export const getToyById = cache(async (id: number) => {
       toys
     WHERE
       id = ${id}
-  `;
+      `;
+
   return toy;
 });
