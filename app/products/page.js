@@ -6,8 +6,9 @@ import styles from './product.module.scss';
 
 export default async function ProductsPage() {
   const toys = await getToys();
-  // get the cookies from the server
-  const getProductsCookie = cookies().get('productsCookie');
+
+  const getProductsCookie = cookies().get('cart');
+
   let productsParsed = [];
 
   if (getProductsCookie) {
@@ -17,42 +18,36 @@ export default async function ProductsPage() {
   const productsWithCount = toys.map((toy) => {
     const productWithCount = { ...toy, quantity: 0 };
 
-    // i read the cookie and find the fruit
     const productInCookie = productsParsed.find(
       (toyObject) => toy.id === toyObject.id,
     );
 
-    // if find the fruit i update the amount of stars
     if (productInCookie) {
       productWithCount.quantity = productInCookie.quantity;
     }
-    console.log(productWithCount);
 
     return productWithCount;
   });
 
   return (
     <main className={styles.main}>
-      <h1>All Products</h1>
-
-      <div>
-        {productsWithCount.map((toy) => {
-          return (
-            <div key={toy.id}>
-              <p>num {toy.quantity}</p>
-              <Link href={`/products/${toy.id}`}>
-                <h2>{toy.name}</h2>
-                <Image
-                  src={`/images/${toy.id}.jpg`}
-                  alt={toy.Toyname}
-                  width="300"
-                  height="300"
-                />
-              </Link>
-            </div>
-          );
-        })}
-      </div>
+      {productsWithCount.map((toy) => {
+        return (
+          <div key={toy.id}>
+            <p>num {toy.quantity}</p>
+            <Link href={`/products/${toy.id}`}>
+              <Image
+                src={`/images/${toy.id}.jpg`}
+                alt={toy.toyName}
+                width="300"
+                height="300"
+              />
+              <h2>{toy.toyName}</h2>
+            </Link>
+            <p>{toy.price}€</p>
+          </div>
+        );
+      })}
     </main>
   );
 }
