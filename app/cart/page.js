@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { getToys } from '../../database/toys';
 
 export default async function CartPage() {
+  // getting the cookies
   const getProductsCookie = cookies().get('cart');
   let cartList = [];
   let productsParsed = [];
@@ -11,6 +12,7 @@ export default async function CartPage() {
     productsParsed = JSON.parse(getProductsCookie.value);
   }
 
+  // comaping what is in the cookies with the database and getting the cart list
   const toys = await getToys();
   productsParsed.map((cookie) => {
     toys.find((toy) =>
@@ -23,7 +25,7 @@ export default async function CartPage() {
         : null,
     );
 
-    return 1;
+    return cartList;
   });
 
   return (
