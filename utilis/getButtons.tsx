@@ -34,7 +34,7 @@ export function GetRemoveButton(props: Props) {
 
 export function GetCheckoutButton() {
   return (
-    <Link href="/checkout">
+    <Link href="/checkout/">
       <button>Checkout</button>
     </Link>
   );
