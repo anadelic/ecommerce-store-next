@@ -3,6 +3,12 @@ import Nav from '../components/nav.tsx';
 import GetTotal from '../utilis/getTotal';
 import styles from './layout.module.scss';
 
+export const metadata = {
+  title: 'Smallkind',
+  description:
+    "As a family-run concept store, we attach great importance to sustainably manufactured children's clothing, toys and room interior.",
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

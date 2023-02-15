@@ -6,6 +6,11 @@ import styles from './product.module.scss';
 
 export const dynamic = 'force-dynamic';
 
+export const metadata = {
+  title: 'Smallkind|Toys',
+  description: 'Here you can find all our toys',
+};
+
 export default async function ProductsPage() {
   const toys = await getToys();
 
