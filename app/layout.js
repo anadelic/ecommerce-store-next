@@ -1,6 +1,6 @@
 import './global.scss';
-import GetTotal from '../components/getTotal';
-import Nav from '../components/nav.js';
+import Nav from '../components/nav.tsx';
+import GetTotal from '../utilis/getTotal';
 import styles from './layout.module.scss';
 
 export default function RootLayout({ children }) {
@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
           </Nav>
         </header>
         {children}
-        <footer>
+        <footer className={styles.footer}>
           Copyright <span>Smallkind</span>
           {new Date().getFullYear()}
         </footer>

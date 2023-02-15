@@ -1,40 +1,42 @@
-import { cookies } from 'next/headers';
+// import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getToys } from '../../database/toys';
 import styles from './product.module.scss';
 
+export const dynamic = 'force-dynamic';
+
 export default async function ProductsPage() {
   const toys = await getToys();
 
-  const getProductsCookie = cookies().get('cart');
+  // const getProductsCookie = cookies().get('cart');
 
-  let productsParsed = [];
+  // const productsParsed = [];
 
-  if (getProductsCookie) {
-    productsParsed = JSON.parse(getProductsCookie.value);
-  }
+  // if (getProductsCookie) {
+  //   productsParsed = JSON.parse(getProductsCookie.value);
+  // }
 
-  const productsWithCount = toys.map((toy) => {
-    const productWithCount = { ...toy, quantity: 0 };
+  // const productsWithCount = toys.map((toy) => {
+  //   const productWithCount = { ...toy, quantity: 0 };
 
-    const productInCookie = productsParsed.find(
-      (toyObject) => toy.id === toyObject.id,
-    );
+  //   const productInCookie = productsParsed.find(
+  //     (toyObject) => toy.id === toyObject.id,
+  //   );
 
-    if (productInCookie) {
-      productWithCount.quantity = productInCookie.quantity;
-    }
+  //   if (productInCookie) {
+  //     productWithCount.quantity = productInCookie.quantity;
+  //   }
 
-    return productWithCount;
-  });
+  //   return productWithCount;
+  // });
 
   return (
     <main className={styles.main}>
-      {productsWithCount.map((toy) => {
+      <h1>Toys</h1>
+      {toys.map((toy) => {
         return (
           <div key={toy.id}>
-            <p>num {toy.quantity}</p>
             <Link href={`/products/${toy.id}`}>
               <Image
                 src={`/images/${toy.id}.jpg`}

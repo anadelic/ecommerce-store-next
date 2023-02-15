@@ -1,66 +1,71 @@
 'use client';
-import Image from 'next/image';
+
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 // import { totalNumberOfProducts } from '../../../components/_app';
 import { getParsedCookie, setStringifiedCookie } from '../../../utilis/cookies';
 
 export default function Product(props) {
-  const [qty, setQty] = useState(1);
+  const [count, setCount] = useState(1);
+  const router = useRouter();
 
   return (
     <>
-      <Image
+      {/* <Image
         src={`/images/${props.toy.id}.jpg`}
-        alt="here is a picture of a toy"
+        alt={props.toy.toyName}
         width="300"
         height="300"
-      />
-      <label htmlFor="quantity">Quantity: </label>
-      <input
-        type="number"
-        id="qy"
-        name="qy"
-        min="1"
-        max="10"
-        value={qty}
-        onChange={(e) => setQty(e.currentTarget.value)}
-      />
+      /> */}
+      <div>
+        <button
+          onClick={() => {
+            if (count <= 1) {
+              setCount(1);
+            } else {
+              setCount(count - 1);
+            }
+          }}
+        >
+          -
+        </button>
+        <input data-test-id="product-quantity" readOnly value={count} />
+        <button
+          onClick={() => {
+            setCount(count + 1);
+          }}
+        >
+          +
+        </button>
+        <br />
+        <button
+          data-test-id="product-add-to-cart"
+          onClick={() => {
+            const productsInCookies = getParsedCookie('cart');
+            if (!productsInCookies) {
+              setStringifiedCookie('cart', [
+                { id: props.toy.id, quantity: count },
+              ]);
 
-      <button
-        onClick={() => {
-          // get the cookie
-          const productsInCookies = getParsedCookie('cart');
+              return;
+            }
+            const foundProduct = productsInCookies.find((productInCookie) => {
+              return productInCookie.id === props.toy.id;
+            });
+            if (foundProduct) {
+              foundProduct.quantity += count;
+            } else {
+              productsInCookies.push({ id: props.toy.id, quantity: count });
+            }
 
-          // if there is no cookie I create a cookie and set to value of the input qty
-          if (!productsInCookies) {
-            setStringifiedCookie('cart', [{ id: props.toy.id, quantity: 1 }]);
-            window.location.reload(true);
-            // if there is no cookie function stop here
-            return;
-          }
-
-          // if cookie exists check if the product is in this cookie
-          const foundProduct = productsInCookies.find((productInCookie) => {
-            return productInCookie.id === props.toy.id;
-          });
-
-          // product is inside of the cookie
-          if (foundProduct) {
-            foundProduct.quantity = Number(foundProduct.quantity) + Number(qty);
-          } else {
-            productsInCookies.push({ id: props.toy.id, quantity: qty });
-          }
-
-          // Update the cookie after transformation
-          setStringifiedCookie('cart', productsInCookies);
-
-          window.location.reload(true);
-        }}
-      >
-        Add to Cart
-      </button>
-      <p>{props.toy.toyDescription}</p>
-      <p>{props.toy.price}</p>
+            setStringifiedCookie('cart', productsInCookies);
+            setCount(1);
+            router.refresh();
+          }}
+        >
+          ADD TO CART
+        </button>
+      </div>
     </>
   );
 }

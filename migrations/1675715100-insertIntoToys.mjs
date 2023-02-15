@@ -27,6 +27,14 @@ const toys = [
       'Doll House Animals "Holdie Folk Dinosaurs" 3pcs - details. Material: wool and cotton. Size: 20 x 12 cm. Line: Holdie Folk. Handmade. Fits in small children hands',
     price: '29.90',
   },
+
+  // {
+  //   id: 5,
+  //   toy_name: 'Animal Doll "Mrs. Elephant"',
+  //   toy_description:
+  //     'Material: 100% organic. Model: Mrs Elephant. Collection: Puppet World. Recommended age: From 0+ years.',
+  //   price: '18',
+  // },
 ];
 
 export async function up(sql) {
