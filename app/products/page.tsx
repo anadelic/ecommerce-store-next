@@ -38,12 +38,14 @@ export default async function ProductsPage() {
 
   return (
     <main className={styles.main}>
-      <h1>Toys</h1>
+      <h1 className={styles.toyH1}>Toys</h1>
+      <hr className={styles.lineBreak} />
       {toys.map((toy) => {
         return (
           <div key={toy.id}>
             <Link href={`/products/${toy.id}`}>
               <Image
+                className={styles.image}
                 src={`/images/${toy.id}.jpg`}
                 alt={toy.toyName}
                 width="300"

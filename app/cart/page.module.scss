@@ -1,3 +1,61 @@
 .main {
-  margin-top: 200px;
+  display: flex;
+  margin-top: 100px;
+  flex-direction: column;
+  h1 {
+    margin-top: 30px;
+    text-align: center;
+  }
+}
+
+.productsLayout {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-top: 100px;
+  flex-direction: column;
+
+  p {
+    text-align: center;
+  }
+}
+
+.imagesLayout {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.lineBreak {
+  width: 300px;
+  height: 4px;
+  background-color: #ad6f6d;
+  border: none;
+}
+
+.button {
+  padding: 20px;
+  text-align: center;
+}
+
+.checkoutLayout {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+
+  p {
+    text-align: center;
+    font-size: 2rem;
+    color: black;
+  }
+
+  div {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  a {
+    text-align: center;
+  }
 }

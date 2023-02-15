@@ -10,62 +10,54 @@ export default function Product(props) {
   const router = useRouter();
 
   return (
-    <>
-      {/* <Image
-        src={`/images/${props.toy.id}.jpg`}
-        alt={props.toy.toyName}
-        width="300"
-        height="300"
-      /> */}
-      <div>
-        <button
-          onClick={() => {
-            if (count <= 1) {
-              setCount(1);
-            } else {
-              setCount(count - 1);
-            }
-          }}
-        >
-          -
-        </button>
-        <input data-test-id="product-quantity" readOnly value={count} />
-        <button
-          onClick={() => {
-            setCount(count + 1);
-          }}
-        >
-          +
-        </button>
-        <br />
-        <button
-          data-test-id="product-add-to-cart"
-          onClick={() => {
-            const productsInCookies = getParsedCookie('cart');
-            if (!productsInCookies) {
-              setStringifiedCookie('cart', [
-                { id: props.toy.id, quantity: count },
-              ]);
-
-              return;
-            }
-            const foundProduct = productsInCookies.find((productInCookie) => {
-              return productInCookie.id === props.toy.id;
-            });
-            if (foundProduct) {
-              foundProduct.quantity += count;
-            } else {
-              productsInCookies.push({ id: props.toy.id, quantity: count });
-            }
-
-            setStringifiedCookie('cart', productsInCookies);
+    <div>
+      <button
+        onClick={() => {
+          if (count <= 1) {
             setCount(1);
-            router.refresh();
-          }}
-        >
-          ADD TO CART
-        </button>
-      </div>
-    </>
+          } else {
+            setCount(count - 1);
+          }
+        }}
+      >
+        -
+      </button>
+      <input data-test-id="product-quantity" readOnly value={count} />
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        +
+      </button>
+      <br />
+      <button
+        data-test-id="product-add-to-cart"
+        onClick={() => {
+          const productsInCookies = getParsedCookie('cart');
+          if (!productsInCookies) {
+            setStringifiedCookie('cart', [
+              { id: props.toy.id, quantity: count },
+            ]);
+
+            return;
+          }
+          const foundProduct = productsInCookies.find((productInCookie) => {
+            return productInCookie.id === props.toy.id;
+          });
+          if (foundProduct) {
+            foundProduct.quantity += count;
+          } else {
+            productsInCookies.push({ id: props.toy.id, quantity: count });
+          }
+
+          setStringifiedCookie('cart', productsInCookies);
+          setCount(1);
+          router.refresh();
+        }}
+      >
+        ADD TO CART
+      </button>
+    </div>
   );
 }

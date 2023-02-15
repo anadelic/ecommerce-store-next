@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
 *,
 *::before,
 *::after {
@@ -7,8 +9,7 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Dank Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo,
-    Courier, monospace;
+  font-family: 'Shadows Into Light', cursive;
   font-size: 21px;
   background-color: #f8f0dc;
   color: var(--main-text-color);
