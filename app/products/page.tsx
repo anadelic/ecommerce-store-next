@@ -42,7 +42,7 @@ export default async function ProductsPage() {
       <hr className={styles.lineBreak} />
       {toys.map((toy) => {
         return (
-          <div key={toy.id}>
+          <div key={`product-${toy.id}`}>
             <Link
               href={`/products/${toy.id}`}
               data-test-id={`product-${toy.id}`}

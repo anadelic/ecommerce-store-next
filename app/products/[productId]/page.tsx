@@ -39,8 +39,8 @@ export default async function ProductPage(props: Props) {
         />
         <Product toy={singleProduct} />
       </div>
-      <h1>{singleProduct.toyName}</h1>
-      <p data-test-id="product-price">{singleProduct.price}</p>
+      <h1>{singleProduct?.toyName}</h1>
+      <p data-test-id="product-price">{singleProduct?.price}</p>
       <div className={styles.descriptionStyle}>
         <p>{singleProduct?.toyDescription}</p>
       </div>

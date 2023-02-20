@@ -12,9 +12,8 @@ export const metadata = {
 };
 export default async function CartPage() {
   // Get toys from database
-  console.log('click1');
+
   const toys = await getToys();
-  console.log('click2');
 
   // Get cookies
   const productsCookie = cookies().get('cart');
@@ -55,7 +54,7 @@ export default async function CartPage() {
 
       {cartList.map((toy) => {
         return (
-          <div key={toy.id} className={styles.productsLayout}>
+          <div key={`product-${toy.id}`} className={styles.productsLayout}>
             <div data-test-id={`cart-product-${toy.id}`}>
               <Image
                 className={styles.imagesLayout}

@@ -1,6 +1,6 @@
 import { getParsedCookie, setStringifiedCookie } from '../cookies';
 
-test('set, gets and delete a cookie', () => {
+describe('set, gets and delete a cookie', () => {
   // setup
 
   const cookieKey = 'cart';

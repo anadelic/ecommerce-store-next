@@ -18,7 +18,7 @@ test('test checkout flow, payment and thank you page', async ({ page }) => {
   await page.locator('[data-test-id="checkout-postal-code"]').fill('1080');
   await page.locator('[data-test-id="checkout-postal-code"]').press('Tab');
   await page.locator('[data-test-id="checkout-country"]').fill('Austria');
-  await page.locator('[data-test-id="checkout-credit-card"]').click();
+  await page.locator('[data-test-id="checkout-city"]').press('Tab');
   await page
     .locator('[data-test-id="checkout-credit-card"]')
     .fill('4284729429');

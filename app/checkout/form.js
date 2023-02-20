@@ -55,6 +55,14 @@ export default function Form() {
         data-test-id="checkout-city"
         name="city"
       />
+      <label htmlFor="country">Country: </label>
+
+      <input
+        required
+        onChange={onChange}
+        data-test-id="checkout-country"
+        name="country"
+      />
       <label htmlFor="postal-code">Postal code: </label>
       <input
         required
