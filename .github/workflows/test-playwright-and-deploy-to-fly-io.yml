@@ -6,10 +6,11 @@ jobs:
     name: Playwright Tests and Deploy to Fly.io
     runs-on: ubuntu-latest # or macos-latest, windows-latest
     # Update env variables with your own database credentials
-    env: PGHOST= localhost
-      PGUSERNAME= ecommerce_store_next
-      PGPASSWORD= ecommerce_store_next
-      PGDATABASE= ecommerce_store_next
+    env:
+    PGHOST: localhost
+      PGDATABASE: ecommerce_store_next
+      PGUSERNAME: ecommerce_store_next
+      PGPASSWORD: ecommerce_store_next
     steps:
       - name: Start preinstalled PostgreSQL on Ubuntu
         run: |
