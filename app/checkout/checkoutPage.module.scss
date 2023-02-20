@@ -1,0 +1,25 @@
+.checkoutLayout {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  p {
+    margin-top: 100px;
+    font-size: 36px;
+    font-weight: 900;
+    text-align: center;
+  }
+}
+
+.formLayout {
+  justify-content: center;
+  padding: 20px;
+  display: flex;
+}
+
+.lineBreak {
+  width: 300px;
+  height: 4px;
+  background-color: #ad6f6d;
+  border: none;
+}

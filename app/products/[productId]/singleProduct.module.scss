@@ -4,7 +4,6 @@
   align-items: center;
 
   padding: 50px;
-  height: 100vh;
 }
 
 .linksStyle {
@@ -16,24 +15,35 @@
 
 .descriptionStyle {
   position: relative;
-  bottom: 200px;
+  bottom: 100px;
   width: 50%;
   text-align: center;
   margin-left: 300px;
 
   p {
-    font-size: 24px;
+    font-size: 1.3rem;
   }
 }
 
 @media (max-width: 560px) {
   .descriptionStyle {
-    margin-left: 60px;
-    margin-top: 40px;
+    margin-top: 160px;
+    margin-left: 110px;
   }
+  .addToCart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .price {
+    text-align: center;
+    color: #ad6f6d;
+    font-size: 24px;
+    font-weight: bold;
+  }
+}
 
-  .inputStyle {
-    width: 50px;
-    margin-left: 30px;
-  }
+.h1 {
+  margin-top: 200px;
+  text-align: center;
 }

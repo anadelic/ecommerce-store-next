@@ -42,3 +42,12 @@
   background-color: #ad6f6d;
   border: none;
 }
+
+@media (max-width: 600px) {
+  .price {
+    display: none;
+  }
+  .imagesSection {
+    margin-left: 50px;
+  }
+}

@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 import { getToys } from '../../database/toys';
 import { Total } from '../../utilis/cookies';
+import styles from './checkoutPage.module.scss';
 import Form from './form';
 
 export default async function Checkout() {
@@ -34,16 +35,16 @@ export default async function Checkout() {
   const totalPrice = Total(productsWithQuantity);
 
   return (
-    <div>
-      <h4>Shipping Address</h4>
-      <main>
-        <div>
-          <p>Total sum: {totalPrice}</p>
-        </div>
-        <div>
-          <Form />
-        </div>
-      </main>
+    <div className={styles.checkoutLayout}>
+      <div>
+        <p>Shipping Address</p>
+
+        <p>Total sum: {totalPrice}</p>
+        <hr className={styles.lineBreak} />
+      </div>
+      <div className={styles.formLayout}>
+        <Form />
+      </div>
     </div>
   );
 }

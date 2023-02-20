@@ -28,7 +28,8 @@ export default async function ProductPage(props: Props) {
   const singleProduct = await getToyById(parseInt(props.params.productId));
 
   return (
-    <>
+    <div>
+      <h1 className={styles.h1}>{singleProduct?.toyName}</h1>
       <div className={styles.productImage}>
         <Image
           data-test-id="product-image"
@@ -37,13 +38,17 @@ export default async function ProductPage(props: Props) {
           width="300"
           height="300"
         />
+      </div>
+      <div className={styles.addToCart}>
         <Product toy={singleProduct} />
       </div>
-      <h1>{singleProduct?.toyName}</h1>
-      <p data-test-id="product-price">{singleProduct?.price}</p>
+
+      <p data-test-id="product-price" className={styles.price}>
+        {singleProduct?.price}{' '}
+      </p>
       <div className={styles.descriptionStyle}>
         <p>{singleProduct?.toyDescription}</p>
       </div>
-    </>
+    </div>
   );
 }

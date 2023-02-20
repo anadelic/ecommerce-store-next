@@ -42,7 +42,7 @@ export default async function ProductsPage() {
       <hr className={styles.lineBreak} />
       {toys.map((toy) => {
         return (
-          <div key={`product-${toy.id}`}>
+          <div key={`product-${toy.id}`} className={styles.imagesSection}>
             <Link
               href={`/products/${toy.id}`}
               data-test-id={`product-${toy.id}`}
@@ -56,7 +56,9 @@ export default async function ProductsPage() {
               />
               <h2>{toy.toyName}</h2>
             </Link>
-            <p>{toy.price}€</p>
+            <div>
+              <p className={styles.price}>{toy.price}€</p>
+            </div>
           </div>
         );
       })}

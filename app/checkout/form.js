@@ -1,15 +1,10 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 
 export default function Form() {
-  const [inputValue, setInputValue] = useState('');
   const router = useRouter();
 
-  const onChange = (e) => {
-    setInputValue(e.target.value);
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     await router.push('/thankyou');
@@ -18,72 +13,37 @@ export default function Form() {
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="firstName">First name: </label>
-      <input
-        required
-        onChange={onChange}
-        data-test-id="checkout-first-name"
-        name="firstName"
-      />
+      <input required data-test-id="checkout-first-name" name="firstName" />
+      <br />
       <label htmlFor="lastName">Last name: </label>
-      <input
-        required
-        onChange={onChange}
-        data-test-id="checkout-last-name"
-        name="lastName"
-      />
+      <input required data-test-id="checkout-last-name" name="lastName" />
       <br />
       <label htmlFor="e-mail">E-mail: </label>
-      <input
-        required
-        onChange={onChange}
-        data-test-id="checkout-email"
-        name="e-mail"
-      />
+      <input required data-test-id="checkout-email" name="e-mail" />
+      <br />
       <label htmlFor="address">Address: </label>
-      <input
-        required
-        onChange={onChange}
-        data-test-id="checkout-address"
-        name="address"
-      />
+      <input required data-test-id="checkout-address" name="address" />
       <br />
       <label htmlFor="city">City: </label>
 
-      <input
-        required
-        onChange={onChange}
-        data-test-id="checkout-city"
-        name="city"
-      />
+      <input required data-test-id="checkout-city" name="city" />
+      <br />
       <label htmlFor="country">Country: </label>
 
-      <input
-        required
-        onChange={onChange}
-        data-test-id="checkout-country"
-        name="country"
-      />
+      <input required data-test-id="checkout-country" name="country" />
+      <br />
       <label htmlFor="postal-code">Postal code: </label>
-      <input
-        required
-        onChange={onChange}
-        data-test-id="checkout-postal-code"
-        name="postal-code"
-      />
-
+      <input required data-test-id="checkout-postal-code" name="postal-code" />
+      <br />
       <h4>Credit card details:</h4>
+      <br />
       <label htmlFor="credit-card">Credit card number: </label>
-      <input
-        required
-        onChange={onChange}
-        data-test-id="checkout-credit-card"
-        name="credit-card"
-      />
+      <input required data-test-id="checkout-credit-card" name="credit-card" />
+      <br />
       <label htmlFor="expiration-date">Expiration date: </label>
       <input
         type="month"
         required
-        onChange={onChange}
         data-test-id="checkout-expiration-date"
         name="expiration-date"
       />
@@ -91,7 +51,6 @@ export default function Form() {
       <label htmlFor="security-code">Security code: </label>
       <input
         required
-        onChange={onChange}
         data-test-id="checkout-security-code"
         name="security-code"
       />
