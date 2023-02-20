@@ -1,90 +1,47 @@
-'use client';
+import { cookies } from 'next/headers';
+import { getToys } from '../../database/toys';
+import { Total } from '../../utilis/cookies';
+import Form from './form';
 
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+export default async function Checkout() {
+  const toys = await getToys();
 
-export default function Checkout() {
-  const [inputValue, setInputValue] = useState('');
-  const router = useRouter();
+  // Get cookies
+  const productsCookie = cookies().get('cart');
 
-  const onChange = (e) => {
-    setInputValue(e.target.value);
-  };
+  let productsCookieParsed = [];
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await router.push('/thankyou');
-  };
+  if (productsCookie) {
+    productsCookieParsed = JSON.parse(productsCookie.value);
+  }
+  // adding qty to toys
+  const productsWithQuantity = toys.map((toy) => {
+    const productWithQuantity = { ...toy, quantity: 0 };
+
+    // Read the cookie and commparing the ids with toy's id
+    const productInCookie = productsCookieParsed.find(
+      (productObject) => toy.id === productObject.id,
+    );
+
+    // if product is found the quantity gets updated
+    if (productInCookie) {
+      productWithQuantity.quantity = productInCookie.quantity;
+    }
+    return productWithQuantity;
+  });
+
+  // Calculate the total sum of price with imported reduce method
+  const totalPrice = Total(productsWithQuantity);
 
   return (
     <div>
       <h4>Shipping Address</h4>
       <main>
         <div>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="firstName">First name</label>
-            <input
-              onChange={onChange}
-              data-test-id="checkout-first-name"
-              name="firstName"
-            />
-            <label htmlFor="lastName">Last name</label>
-            <input
-              onChange={onChange}
-              data-test-id="checkout-last-name"
-              name="lastName"
-            />
-            <br />
-            <label htmlFor="e-mail">E-mail</label>
-            <input
-              onChange={onChange}
-              data-test-id="checkout-e-mail"
-              name="e-mail"
-            />
-            <label htmlFor="address">Address</label>
-            <input
-              onChange={onChange}
-              data-test-id="checkout-address"
-              name="address"
-            />
-            <br />
-            <label htmlFor="city">City</label>
-
-            <input
-              onChange={onChange}
-              data-test-id="checkout-city"
-              name="city"
-            />
-            <label htmlFor="postal-code">Postal code</label>
-            <input
-              onChange={onChange}
-              data-test-id="checkout-postal-code"
-              name="postal-code"
-            />
-            <hr />
-            <h4>Credit card details</h4>
-            <label htmlFor="credit-card">Credit card number</label>
-            <input
-              onChange={onChange}
-              data-test-id="checkout-credit-card"
-              name="credit-card"
-            />
-            <label htmlFor="expiration-date">Expiration date</label>
-            <input
-              onChange={onChange}
-              data-test-id="checkout-expiration-date"
-              name="expiration-date"
-            />
-            <br />
-            <label htmlFor="security-code">Security code</label>
-            <input
-              onChange={onChange}
-              data-test-id="checkout-security-code"
-              name="security-code"
-            />
-            <br />
-            <button data-test-id="checkout-confirm-order">confirm order</button>
-          </form>
+          <p>Total sum: {totalPrice}</p>
+        </div>
+        <div>
+          <Form />
         </div>
       </main>
     </div>

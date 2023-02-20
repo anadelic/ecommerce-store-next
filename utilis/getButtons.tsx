@@ -1,5 +1,5 @@
 'use client';
-import Link from 'next/link';
+
 import { useRouter } from 'next/navigation';
 import { getParsedCookie, setStringifiedCookie } from './cookies';
 
@@ -12,11 +12,12 @@ type Props = {
 type Product = {
   id: number;
 };
+
 export function GetRemoveButton(props: Props) {
   const router = useRouter();
   return (
     <button
-     data-test-id={`cart-product-remove-${props.toy.id}`}
+      data-test-id={`cart-product-remove-${props.toy.id}`}
       onClick={() => {
         const currentCookieValue = getParsedCookie('cart');
         const newList = currentCookieValue.filter(
@@ -28,6 +29,21 @@ export function GetRemoveButton(props: Props) {
       }}
     >
       Remove
+    </button>
+  );
+}
+
+export function GetDeleteAllButton() {
+  const router = useRouter();
+
+  return (
+    <button
+      onClick={() => {
+        setStringifiedCookie('cart', []);
+        router.refresh();
+      }}
+    >
+      Delete all
     </button>
   );
 }

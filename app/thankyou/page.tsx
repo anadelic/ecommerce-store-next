@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Thank You',
+  title: 'Thank you for your order',
   description:
     'Thank you for choosing our store. We hope you will enjoy your new toys!',
 };

@@ -43,7 +43,10 @@ export default async function ProductsPage() {
       {toys.map((toy) => {
         return (
           <div key={toy.id}>
-            <Link href={`/products/${toy.id}`}>
+            <Link
+              href={`/products/${toy.id}`}
+              data-test-id={`product-${toy.id}`}
+            >
               <Image
                 className={styles.image}
                 src={`/images/${toy.id}.jpg`}

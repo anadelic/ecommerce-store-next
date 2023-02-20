@@ -11,6 +11,8 @@ export const metadata = {
     "As a family-run concept store, we attach great importance to sustainably manufactured children's clothing, toys and room interior.",
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function RootLayout({ children }) {
   const toys = await getToys();
   // Get cookies
@@ -46,10 +48,10 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body>
         <header className={styles.header}>
-          <div>
-            <Link href="/">LOGO</Link>
+          <div className={styles.logoStyle}>
+            <p>SMALLKIND</p>
           </div>
-          <nav>
+          <nav className={styles.links}>
             <Link href="/">Home</Link>
 
             <Link href="/">About</Link>
@@ -65,7 +67,7 @@ export default async function RootLayout({ children }) {
               />
               <span data-test-id="cart-count">{total}</span>
             </Link>
-          </nav>{' '}
+          </nav>
         </header>
         {children}
         <footer className={styles.footer}>
